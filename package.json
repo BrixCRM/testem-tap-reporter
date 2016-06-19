@@ -1,0 +1,15 @@
+{
+  "name": "tap-parser-usage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node main.js testem.tap"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mustache": "^2.2.1",
+    "tap-parser": "^1.2.2"
+  }
+}

@@ -1,0 +1,26 @@
+ok 1 Firefox 47.0 - console log write object
+    ---
+        Log: |
+            { type: 'log', text: '\'Hello, world {}\'\n' }
+            { type: 'log',
+              text: '{ name: \'Andrew\', age: 31, sex: \'male\' }\n' }
+            { type: 'warn',
+              text: '{ weather: \'sunny\', temperature: 27.2 }\n' }
+            { type: 'info',
+              text: '{ weather: \'cloudy\', temperature: 24.8 }\n' }
+    ...
+not ok 2 Firefox 47.0 - console log failure
+    ---
+        message: >
+            the string "This is a error message." was thrown, throw an Error :)
+        Log: |
+    ...
+ok 3 Firefox 47.0 - ecmascript Array splice can handle empty list
+ok 4 Firefox 47.0 - prelude head head([1]) returns 1
+ok 5 Firefox 47.0 - prelude last last([1]) returns 1
+
+1..5
+# tests 5
+# pass  4
+# skip  0
+# fail  1

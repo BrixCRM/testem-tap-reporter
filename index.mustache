@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>Test Result</title>
+    <style type="text/css" media="all">
+     table {
+       border-collapse: collapse;
+       color: #111;
+     }
+     th {
+       background-color: #ddd;
+     }
+     th, td {
+       border: 1px #cbcbcb solid;
+       padding: 0.5em 1em;
+     }
+
+     td.ok {
+       background-color: #2ecc40;
+       text-align: center;
+     }
+
+     td.not-ok {
+       background-color: #ff4136;
+       text-align: center;
+     }
+
+     .log-inner-table th, .log-inner-table td {
+       border: none;
+       padding: 0 1em;
+     }
+
+     .log-type::after {
+       content: ":";
+     }
+
+     /* toggle log row visibility */
+     .test .has-log::after {
+       content: "+";
+     }
+     .test ~ .log {
+       display: none;
+     }
+
+     .test.open-log .has-log::after {
+       content: "-";
+     }
+     .test.open-log ~ .log {
+       display: table-row;
+     }
+    </style>
+  </head>
+  <body>
+    <h1>Test Result</h1>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>id</th>
+          <th>name</th>
+          <th>message</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#asserts}}
+          <tr id="test-{{id}}" class="test">
+            {{#ok}}
+              <td class="ok{{#hasLog}} has-log{{/hasLog}}"></td>
+            {{/ok}}
+            {{^ok}}
+              <td class="not-ok{{#hasLog}} has-log{{/hasLog}}"></td>
+            {{/ok}}
+            <td>#{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{message}}</td>
+          </tr>
+          {{#hasLog}}
+            <tr id="log-{{id}}" class="log">
+              <td></td>
+              <td></td>
+              <td colspan="2">
+                <table class="log-inner-table">
+                  {{#log}}
+                    <tr>
+                      <td class="log-type">{{type}}</td>
+                      <td class="log-text">{{text}}</td>
+                    </tr>
+                  {{/log}}
+                </table>
+              </td>
+            </tr>
+          {{/hasLog}}
+        {{/asserts}}
+      </tbody>
+    </table>
+    <script>
+     window.addEventListener('load', function() {
+       Array.prototype.forEach.call(document.querySelectorAll('.test'), function(element) {
+         element.addEventListener('click', function(e) {
+           if (element.getAttribute('class').indexOf('open-log') >= 0) {
+             element.setAttribute('class', 'test');
+           } else {
+             element.setAttribute('class', 'test open-log');
+           }
+         });
+       });
+     });
+    </script>
+  </body>
+</html>
