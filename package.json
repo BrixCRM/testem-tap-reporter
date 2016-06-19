@@ -1,5 +1,5 @@
 {
-  "name": "tap-parser-usage",
+  "name": "testem-tap-reporter",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "node main.js testem.tap"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "mustache": "^2.2.1",
     "tap-parser": "^1.2.2"
